@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+/* 
+  EINDVERSIE:
+  Pas hier later je vaste merkstijl aan.
+  Als je kleuren of spacing wilt veranderen, doe het hier eerst.
+*/
+
+:root {
+  --background: #f7f1e8;
+  --surface: #fff9f3;
+  --surface-2: #f2e6da;
+  --surface-3: #e7d8c7;
+
+  --brand: #355c4b;
+  --brand-dark: #2d4d3f;
+
+  --accent: #c96e4f;
+  --accent-dark: #b85f42;
+
+  --ink: #4a3428;
+  --muted: #6f5a4d;
+  --border: #dbcbbb;
+
+  --success: #25d366;
+  --success-dark: #20bd5c;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--ink);
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-lora), Georgia, serif;
+}
+
+/* Zichtbaar als iemand tekst selecteert */
+::selection {
+  background: var(--brand);
+  color: white;
+}
+
+/* Niet direct zichtbaar als los element, wel voelbaar in de UI */
+a,
+button {
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    opacity 160ms ease;
+}
+
+/* Helper-classes */
+.card-shadow {
+  box-shadow: 0 12px 30px rgba(74, 52, 40, 0.08);
+}
+
+.soft-border {
+  border: 1px solid rgba(74, 52, 40, 0.08);
+}
+
+.gradient-warm {
+  background:
+    radial-gradient(circle at top right, rgba(201, 110, 79, 0.18), transparent 34%),
+    radial-gradient(circle at bottom left, rgba(53, 92, 75, 0.16), transparent 28%),
+    linear-gradient(135deg, #fff7ef 0%, #f2e3d4 100%);
+}
+
+/* Hero / cards / text balance */
+.text-balance {
+  text-wrap: balance;
+}
