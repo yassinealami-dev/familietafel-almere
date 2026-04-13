@@ -1,26 +1,32 @@
-import { Clock3, Home, MessageCircleMore, Snowflake, Soup, Users } from "lucide-react";
+import {
+  Clock3,
+  Home,
+  Snowflake,
+  Soup,
+  Users,
+} from "lucide-react";
 
-import { menuCategories, menuItems, menuPageContent } from "@/content/menu";
-import { siteConfig } from "@/content/site";
-import { buildOrderMessage, buildWhatsAppUrl } from "@/lib/whatsapp";
+import { MenuItemCard } from "@/components/menu/menu-item-card";
 import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/ui/page-hero";
 import { Section } from "@/components/ui/section";
-import { MenuItemCard } from "@/components/menu/menu-item-card";
+import { menuCategories, menuItems, menuPageContent } from "@/content/menu";
+import { siteConfig } from "@/content/site";
+import { buildOrderMessage, buildWhatsAppUrl } from "@/lib/whatsapp";
+
+const categoryIcons = {
+  warm: Soup,
+  cool: Clock3,
+  frozen: Snowflake,
+  family: Users,
+  extra: Home,
+} as const;
 
 export default function MenuPage() {
   const whatsappUrl = buildWhatsAppUrl({
     phone: siteConfig.whatsappNumber,
     message: buildOrderMessage(),
   });
-
-  const categoryIcons = {
-    warm: Soup,
-    cool: Clock3,
-    frozen: Snowflake,
-    family: Users,
-    extra: Home,
-  } as const;
 
   return (
     <>
@@ -35,7 +41,7 @@ export default function MenuPage() {
 
       <Section className="pt-2">
         <div className="grid gap-6 md:grid-cols-[1.1fr_0.9fr]">
-          <div className="rounded-[28px] border border-[var(--border)] bg-white/80 p-6 card-shadow md:p-8">
+          <div className="card-shadow rounded-[28px] border border-[var(--border)] bg-white/80 p-6 md:p-8">
             <h2 className="font-display text-4xl leading-tight text-[var(--ink)] md:text-5xl">
               Overzichtelijk kiezen, zonder gedoe
             </h2>
@@ -61,8 +67,10 @@ export default function MenuPage() {
             </div>
           </div>
 
-          <div className="rounded-[28px] border border-[var(--border)] bg-[var(--surface-2)] p-6 card-shadow md:p-8">
-            <h2 className="font-display text-4xl text-[var(--ink)]">Goed om te weten</h2>
+          <div className="card-shadow rounded-[28px] border border-[var(--border)] bg-[var(--surface-2)] p-6 md:p-8">
+            <h2 className="font-display text-4xl text-[var(--ink)]">
+              Goed om te weten
+            </h2>
 
             <div className="mt-6 space-y-4">
               {menuPageContent.orderingNotes.map((note) => (
@@ -73,7 +81,12 @@ export default function MenuPage() {
             </div>
 
             <div className="mt-6">
-              <Button href={whatsappUrl} variant="whatsapp" target="_blank" rel="noreferrer">
+              <Button
+                href={whatsappUrl}
+                variant="whatsapp"
+                target="_blank"
+                rel="noreferrer"
+              >
                 Bestel via WhatsApp
               </Button>
             </div>
@@ -84,13 +97,15 @@ export default function MenuPage() {
       {menuCategories.map((category) => {
         const items = menuItems.filter((item) => item.category === category.id);
 
-        if (items.length === 0) return null;
+        if (items.length === 0) {
+          return null;
+        }
 
         const Icon = categoryIcons[category.id];
 
         return (
           <Section key={category.id} id={category.id} className="pt-6 md:pt-8">
-            <div className="rounded-[28px] border border-[var(--border)] bg-white/80 p-6 card-shadow md:p-8">
+            <div className="card-shadow rounded-[28px] border border-[var(--border)] bg-white/80 p-6 md:p-8">
               <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
                 <div className="max-w-3xl">
                   <div className="flex items-center gap-3">
@@ -112,7 +127,12 @@ export default function MenuPage() {
                 </div>
 
                 <div className="flex flex-col gap-3 sm:flex-row">
-                  <Button href={whatsappUrl} variant="whatsapp" target="_blank" rel="noreferrer">
+                  <Button
+                    href={whatsappUrl}
+                    variant="whatsapp"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     Bestel via WhatsApp
                   </Button>
                 </div>
@@ -129,7 +149,7 @@ export default function MenuPage() {
       })}
 
       <Section className="pt-6 md:pt-8">
-        <div className="rounded-[28px] bg-[var(--brand)] px-6 py-10 text-white card-shadow md:px-10 md:py-12">
+        <div className="card-shadow rounded-[28px] bg-[var(--brand)] px-6 py-10 text-white md:px-10 md:py-12">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl">
               <h2 className="font-display text-3xl leading-tight md:text-4xl">
@@ -142,7 +162,12 @@ export default function MenuPage() {
             </div>
 
             <div className="flex flex-col gap-3 sm:flex-row">
-              <Button href={whatsappUrl} variant="whatsapp" target="_blank" rel="noreferrer">
+              <Button
+                href={whatsappUrl}
+                variant="whatsapp"
+                target="_blank"
+                rel="noreferrer"
+              >
                 Bestel via WhatsApp
               </Button>
 

@@ -1,4 +1,15 @@
-import type { MenuItem } from "@/types/menu";
+export type MenuCategoryId = "warm" | "cool" | "frozen" | "family" | "extra";
+
+export type MenuItem = {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  category: MenuCategoryId;
+  badge?: string;
+  featured?: boolean;
+  serves?: string;
+};
 
 export const menuCategories = [
   {
@@ -109,8 +120,7 @@ export const menuItems: MenuItem[] = [
   {
     id: "family-tray-kip-rijst",
     name: "Family tray kip-rijstschotel",
-    description:
-      "Een complete gezinsschotel, handig voor drukke avonden.",
+    description: "Een complete gezinsschotel, handig voor drukke avonden.",
     price: 26.5,
     category: "family",
     badge: "Family tray",
@@ -119,15 +129,7 @@ export const menuItems: MenuItem[] = [
   },
 ];
 
-/*
-  EINDVERSIE:
-  - vervang prijzen door je echte prijzen
-  - voeg later tijdelijke weekacties toe
-  - als je overstapt naar CMS/database, vervang je dit bestand door data-fetching
-*/
-export const homePreviewMenu = menuItems
-  .filter((item) => item.featured)
-  .slice(0, 6);
+export const homePreviewMenu = menuItems.filter((item) => item.featured).slice(0, 6);
 
 export const menuPageContent = {
   intro:

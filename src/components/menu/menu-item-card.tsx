@@ -1,8 +1,8 @@
-import { siteConfig } from "@/content/site";
-import { buildOrderMessage, buildWhatsAppUrl } from "@/lib/whatsapp";
-import { formatPrice } from "@/lib/utils";
-import type { MenuItem } from "@/types/menu";
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/content/site";
+import type { MenuItem } from "@/content/menu";
+import { formatPrice } from "@/lib/utils";
+import { buildOrderMessage, buildWhatsAppUrl } from "@/lib/whatsapp";
 
 type MenuItemCardProps = {
   item: MenuItem;
@@ -32,9 +32,13 @@ export function MenuItemCard({ item }: MenuItemCardProps) {
   });
 
   return (
-    <div className="rounded-[24px] border border-[var(--border)] bg-white/80 p-6 card-shadow">
+    <div className="card-shadow rounded-[24px] border border-[var(--border)] bg-white/80 p-6">
       <div className="flex items-start justify-between gap-4">
-        <span className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${badgeClasses(item.category)}`}>
+        <span
+          className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${badgeClasses(
+            item.category
+          )}`}
+        >
           {item.badge ?? item.category}
         </span>
 
@@ -58,7 +62,12 @@ export function MenuItemCard({ item }: MenuItemCardProps) {
       ) : null}
 
       <div className="mt-6">
-        <Button href={whatsappUrl} variant="whatsapp" target="_blank" rel="noreferrer">
+        <Button
+          href={whatsappUrl}
+          variant="whatsapp"
+          target="_blank"
+          rel="noreferrer"
+        >
           Bestel via WhatsApp
         </Button>
       </div>
